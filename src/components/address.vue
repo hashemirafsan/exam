@@ -3,8 +3,11 @@
 		<div class="container">
 		  <div class="jumbotron">
 		  	<ul>
+		  		<router-link :to="{name: 'login'}"><li>Logout</li></router-link>
 			  	<router-link :to="{name: 'profile_edit', params: {id: profile_id}}"><li>edit</li></router-link>
 			  	<router-link :to="{name: 'profile', params: {id: profile_id}}"><li>Show Profile</li></router-link>
+
+
 		  	</ul>   
 		    <h1>Addresses</h1>      
 		   		<div v-if="nothingToShow == true">
@@ -28,7 +31,7 @@
 			}
 		}, 
 		mounted() {
-			
+
 			let getUserdata = 'http://profile.authlab.io/api/v1/addresses?user_id='+this.$route.params.id;
 			axios.get(getUserdata)
 				.then((response) => {
