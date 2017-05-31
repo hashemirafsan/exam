@@ -52,7 +52,7 @@
 			let getUserdata = 'http://profile.authlab.io/api/v1/user?user_id='+this.$route.params.id;
 			axios.get(getUserdata)
 				.then((response) => {
-					
+					console.log(response)
 					this.setData(response.data)
 				})
 

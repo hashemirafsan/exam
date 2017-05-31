@@ -28,6 +28,7 @@
 			}
 		}, 
 		mounted() {
+			
 			let getUserdata = 'http://profile.authlab.io/api/v1/addresses?user_id='+this.$route.params.id;
 			axios.get(getUserdata)
 				.then((response) => {
