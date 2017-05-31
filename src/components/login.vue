@@ -10,7 +10,12 @@
 		    <button type="submit" @click="login">Login</button>
 		    <input type="checkbox" checked="checked"> Remember me
 		  </div>
+		  	<div class="alert alert-danger" v-if="error == 1">
+  				<strong>Email Or Password is wrong!</strong> 
+			</div>
 	</div>
+
+
 </template>
 
 <script>
@@ -19,7 +24,8 @@
 		data() {
 			return {
 				username: '',
-				password: ''
+				password: '',
+				error: ''
 			}
 		},
 		methods: {
@@ -31,8 +37,16 @@
 				}
 				axios.post(Loginurl,data)
 					.then((response) => {
+						let id = response.data.id
 						if(response.status === 200){
-							
+							this.$router.push({
+                                name: 'profile',
+                                params: {
+                                	id: id
+                                }
+                            })
+						} else {
+							this.error = 1
 						}
 					})
 			}
